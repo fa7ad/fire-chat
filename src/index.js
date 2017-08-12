@@ -4,7 +4,7 @@ import { Provider } from 'mobx-react'
 import firebase from 'firebase'
 
 import './index.css'
-import fireConf from '../config'
+import fireConf from './config'
 import App from './App'
 
 import UIStore from './UIStore'

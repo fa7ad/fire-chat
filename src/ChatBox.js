@@ -1,3 +1,5 @@
+import R from 'ramda'
+import _rand from 'lodash.random'
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
@@ -6,11 +8,9 @@ import People from './People'
 import History from './History'
 
 class ChatBox extends Component {
-  constructor (p) {
-    super(p)
-    this.state = {
-      message: ''
-    }
+  constructor (props) {
+    super(props)
+    this.state = { message: '' }
   }
 
   render () {
@@ -19,39 +19,50 @@ class ChatBox extends Component {
       <div className='ChatBox'>
         <People names={data.names} />
         <History messages={data.messages} />
-        <div className='MessageInput'>
-          <textarea
+        <form className='MessageInput' onSubmit={this.sendMessage.bind(this)}>
+          <input
             onChange={e => this.setState({ message: e.target.value })}
-            cols='30'
-            rows='5'
+            type='text'
             value={this.state.message}
           />
-          <button onClick={this.sendMessage.bind(this)}>
-            Send
-          </button>
-        </div>
+        </form>
       </div>
     )
   }
 
-  sendMessage () {
+  sendMessage (e) {
+    e.preventDefault()
+
+    const { data, db } = this.props
     if (this.state.message.length > 1) {
-      this.props.db.ref('messages').push({
-        name: this.props.data.name,
+      db.ref('messages').push({
+        name: data.name,
         time: Date.now(),
         text: this.state.message
       })
+
       this.setState({ message: '' })
     }
   }
 
   componentDidMount () {
     const { data: xdata, db } = this.props
-    db.ref('people').on('value', data => {
-      if (data.val()) xdata.names = Object.values(data.val())
+
+    db.ref('people').on('value', ref => {
+      if (!ref.val()) return void 0
+
+      const names = R.values(ref.val()).map(name => ({
+        name,
+        hue: _rand(0.1, 90.0)
+      }))
+      Object.assign(xdata, {names})
     })
-    db.ref('messages').on('value', data => {
-      if (data.val()) xdata.messages = Object.values(data.val())
+
+    db.ref('messages').limitToLast(250).on('value', ref => {
+      if (!ref.val()) return void 0
+
+      const messages = R.reverse(R.values(ref.val()))
+      Object.assign(xdata, {messages})
     })
   }
 }

@@ -6,7 +6,7 @@
   width: 100%;
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 90vh 10%;
+  grid-template-rows: 95vh auto;
   grid-template-columns: 1fr 5fr;
   grid-template-areas:
     "people history"
@@ -42,30 +42,34 @@
   overflow-y: scroll;
   grid-area: history;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 .ChatBox .MessageInput {
   grid-area: chat;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-.MessageInput textarea {
-  outline: none;
-  border: solid 1px #42A5F5;
-  flex-basis: 90%;
+.ChatBox .MessageInput:after {
+  content: '↵';
+  color: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  font-size: 24px;
 }
 
-.MessageInput button {
+.MessageInput input {
+  height: 100%;
   outline: none;
+  font-size: 24px;
   border: solid 1px #42A5F5;
-  background-color: #2196F3;
-  flex-basis: 10%;
+  padding: 0 5px;
 }
 
 .History .MessageShow {
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
   padding: 15px;
 }
 

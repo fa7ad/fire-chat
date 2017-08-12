@@ -19,4 +19,7 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-window.onbeforeunload = () => DataStore.id.remove()
+window.addEventListener('beforeunload', e => {
+  DataStore.id.remove()
+  return false
+})

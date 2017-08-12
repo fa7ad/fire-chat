@@ -1,22 +1,24 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 
-import _ from 'lodash'
 import head from './head.svg'
 
 const People = props => (
   <div className='People'>
-    {props.names.map((el, idx) => {
-      const css = {
-        filter: `sepia() hue-rotate(${_.random(0, 360)}deg) saturate(10)`
-      }
-      return (
-        <div className='Person' key={idx}>
-          <img src={head} alt={el} className='avatar' style={css} />
-          <b>{el}</b>
-        </div>
-      )
-    })}
+    {props.names.map((el, idx) => (
+      <div className='Person' key={idx}>
+        <img
+          src={head}
+          alt={el.name}
+          className='avatar'
+          style={{
+            filter: `sepia() hue-rotate(${el.hue}deg) saturate(10)`
+          }}
+        />
+        <b>{el.name}</b>
+      </div>
+    ))}
   </div>
 )
 
-export default People
+export default observer(People)

@@ -1,0 +1,29 @@
+.History .MessageShow {
+  border-top: 1px solid #ccc;
+  padding: 15px;
+}
+
+.MessageShow {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-template-rows: 0fr 2fr;
+  grid-template-areas:
+    "name time"
+    "text text";
+}
+
+.MessageShow .Name {
+  grid-area: name;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.MessageShow .Time {
+  grid-area: time;
+  font-style: italic;
+  align-self: flex-end;
+}
+
+.MessageShow .Text {
+  grid-area: text;
+}

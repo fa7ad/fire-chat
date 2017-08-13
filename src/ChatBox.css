@@ -21,23 +21,6 @@
   background-color: #efefef;
 }
 
-.ChatBox .Person {
-  background-color: #fff;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 10px;
-}
-
-.Person img {
-  border-radius: 50%;
-  margin-right: 15px;
-  width: 50px;
-  shape-outside: circle();
-  border: 1px solid #333;
-}
-
 .ChatBox .History {
   overflow-y: scroll;
   grid-area: history;
@@ -51,13 +34,12 @@
   flex-direction: column;
 }
 
-.ChatBox .MessageInput:after {
-  content: '↵';
+.MessageInput:after {
+  content: '\21B5';
   color: rgba(0, 0, 0, 0.25);
   position: absolute;
   right: 0;
-  bottom: 10px;
-  font-size: 24px;
+  bottom: 0;
 }
 
 .MessageInput input {
@@ -66,34 +48,4 @@
   font-size: 24px;
   border: solid 1px #42A5F5;
   padding: 0 5px;
-}
-
-.History .MessageShow {
-  border-top: 1px solid #ccc;
-  padding: 15px;
-}
-
-.MessageShow {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  grid-template-rows: 0fr 2fr;
-  grid-template-areas:
-    "name time"
-    "text text";
-}
-
-.MessageShow .Name {
-  grid-area: name;
-  font-weight: bold;
-  font-size: larger;
-}
-
-.MessageShow .Time {
-  grid-area: time;
-  font-style: italic;
-  align-self: flex-end;
-}
-
-.MessageShow .Text {
-  grid-area: text;
 }

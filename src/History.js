@@ -2,6 +2,8 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { emojify } from 'react-emojione'
 
+import './History.css'
+
 const History = props => (
   <div className='History'>
     {props.messages.map((el, idx) => (

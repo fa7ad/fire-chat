@@ -7282,9 +7282,9 @@ react-dom@^15.6.1:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
-react-emojione@^3.1.10:
-  version "3.1.10"
-  resolved "https://registry.yarnpkg.com/react-emojione/-/react-emojione-3.1.10.tgz#2c233446c61f676381358b0573ea8d39b71e45b8"
+react-emojione@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-emojione/-/react-emojione-4.0.2.tgz#090e45e6cbb7b4c07931ab91b5097ed4b4e5e6b3"
 
 react-error-overlay@^5.1.6:
   version "5.1.6"

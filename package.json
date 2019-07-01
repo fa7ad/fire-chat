@@ -9,8 +9,8 @@
     "mobx": "^3.6.2",
     "mobx-react": "^4.4.3",
     "ramda": "^0.26.1",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-emojione": "^4.0.2",
     "react-scripts": "3.0.1"
   },

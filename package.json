@@ -10,7 +10,7 @@
     "mobx-react": "^4.4.3",
     "ramda": "^0.26.1",
     "react": "^16.10.2",
-    "react-dom": "^16.10.0",
+    "react-dom": "^16.10.2",
     "react-emojione": "^5.0.1",
     "react-scripts": "3.2.0"
   },
